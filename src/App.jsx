@@ -7,11 +7,11 @@ function App() {
   const [currentStep, setCurrentStep] = useState(0);
 
   const steps = [
-    { icon: "fas fa-user-shield",  title: "Boas-vindas & MFA",          desc: "Tela inicial · Biometria facial · Token celular" },
-    { icon: "fas fa-key",          title: "Token de Acesso",             desc: "Software raiz libera sessão via AAA" },
-    { icon: "fas fa-shield-virus", title: "Zero Trust (ZTNA)",           desc: "TLS · VPN · Revalidação contínua" },
-    { icon: "fas fa-sitemap",      title: "Hierarquização",              desc: "Azure AD · RBAC · Auditoria AAA" },
-    { icon: "fas fa-database",     title: "Proteção de Dados",           desc: "Sanitização local · DLP · Criptografia" }
+    { icon: "fas fa-user-shield",  title: "Boas-vindas & MFA",          desc: "Tela inicial · Biometria facial · Token no dispositivo autorizado" },
+    { icon: "fas fa-key",          title: "Token de Acesso",             desc: "Software  libera sessão via AAA" },
+    { icon: "fas fa-shield-virus", title: "Zero Trust (ZTNA)",           desc: "TLS · Revalidação contínua" },
+    { icon: "fas fa-sitemap",      title: "Hierarquização",              desc: "Microsoft Entra ID · RBAC · Auditoria AAA" },
+    { icon: "fas fa-database",     title: "Proteção de Dados",           desc: "Sanitização local · Criptografia · DLP" }
   ];
 
   const valueCards = [
@@ -40,8 +40,8 @@ function App() {
   const techCards = [
     {
       icon: "fas fa-fingerprint",
-      title: "Biometria Facial + MFA",
-      desc: "Autenticação via biometria facial ou token temporário no celular. Software raiz libera acesso apenas após validação completa do framework AAA."
+      title: "Autenticação Multifator",
+      desc: "Autenticação via biometria facial com token temporário em dispositivo autorizado. O Software libera acesso apenas após validação completa do framework AAA."
     },
     {
       icon: "fas fa-shield-virus",
@@ -50,7 +50,7 @@ function App() {
     },
     {
       icon: "fas fa-sitemap",
-      title: "Azure AD + Hierarquização",
+      title: "Microsoft Entra ID + Hierarquização",
       desc: "Consulta o nível hierárquico do usuário após validação do token. Cada nível acessa apenas dados e ações correspondentes à sua função."
     },
     {
@@ -60,19 +60,19 @@ function App() {
     },
     {
       icon: "fas fa-lock",
-      title: "TLS + VPN Corporativa",
-      desc: "Criptografia ponta a ponta com TLS. VPN garante que o tráfego percorra apenas canais seguros, mesmo em redes de terceiros."
+      title: "TLS + ZTNA",
+      desc: "Criptografia ponta a ponta com TLS. O ZTNA garante que o tráfego percorra apenas canais seguros e autorizados, mesmo quando o dispositivo está operando em redes de terceiros."
     },
     {
       icon: "fas fa-database",
-      title: "DLP + Sanitização Local",
-      desc: "Dados processados no dispositivo antes de qualquer transmissão. Camada DLP no backend impede envio de informações não autorizadas."
+      title: "Sanitização Local + DLP",
+      desc: "Dados processados no dispositivo antes de qualquer transmissão. Uma camada DLP impede envio de informações não autorizadas."
     }
   ];
 
   const metrics = [
     { value: "99.99%", label: "Redução de acessos indevidos" },
-    { value: "<2s",    label: "Tempo de bloqueio ao remover o óculos" },
+    { value: "<5s",    label: "Tempo de bloqueio ao remover o óculos" },
     { value: "100%",   label: "Dados criptografados em trânsito" },
     { value: "0",      label: "Dados sensíveis armazenados localmente" }
   ];
@@ -90,7 +90,7 @@ function App() {
       icon: "fas fa-user-shield",
       title: "Autenticação e Controle de Acesso",
       color: "#0088e6",
-      content: "Nossa solução começa com o usuário vestindo o smartglass. Ao iniciar, o dispositivo exibe uma tela de boas-vindas, solicitando autenticação. Utilizamos MFA, permitindo que o usuário se autentique via biometria facial ou um token temporário no celular. Ao validar, o software raiz — que controla os recursos nativos do SmartGlass — libera um token de acesso. Com o framework AAA (Autenticação, Autorização e Auditoria), garantimos o controle contínuo da sessão.",
+      content: "Nossa solução começa com o usuário vestindo o smartglass. Ao iniciar, o dispositivo exibe uma tela de boas-vindas, solicitando autenticação. Utilizamos MFA, permitindo que o usuário se autentique via biometria facial com um token temporário em dispositivo autorizado. Ao validar, o software — que controla os recursos nativos do SmartGlass — libera um token de acesso. Com o framework AAA (Autenticação, Autorização e Auditoria), garantimos o controle contínuo da sessão.",
       tags: ["MFA", "Biometria Facial", "Token JWT", "Framework AAA"]
     },
     {
@@ -98,24 +98,24 @@ function App() {
       icon: "fas fa-shield-virus",
       title: "Conexão Segura e Zero Trust",
       color: "#00aaff",
-      content: "Após a autenticação, o usuário se conecta à rede da Petrobras. Utilizamos uma abordagem Zero Trust (ZTNA), integrando com protocolos TLS e VPNs. O software raiz monitora o contexto da conexão: ao mudar de rede (por exemplo, de uma rede interna para um serviço externo), o ZTNA revalida a identidade e o contexto. Assim, o software garante que o acesso só continue se o ambiente e o usuário estiverem dentro das políticas definidas.",
-      tags: ["ZTNA", "TLS 1.3", "VPN Corporativa", "Revalidação Contínua"]
+      content: "Após a autenticação, o usuário se conecta à rede da Petrobras. Utilizamos uma abordagem Zero Trust (ZTNA), integrado com protocolo TLS. O software raiz monitora o contexto da conexão: ao mudar de rede (por exemplo, de uma rede interna para um serviço externo), o ZTNA revalida a identidade e o contexto. Assim, o software garante que o acesso só continue se o ambiente e o usuário estiverem dentro das políticas definidas.",
+      tags: ["ZTNA", "TLS 1.3", "Revalidação Contínua"]
     },
     {
       number: "03",
       icon: "fas fa-sitemap",
       title: "Hierarquização e Serviços Corporativos",
       color: "#f38020",
-      content: "A hierarquização de acesso é feita com base no Azure AD ou outro serviço corporativo. Após a validação do token, o software consulta o nível hierárquico do usuário. Com o framework AAA, o acesso é auditado, e cada nível permite apenas as ações e dados correspondentes à função do usuário. Isso garante que o acesso aos sistemas corporativos seja sempre hierarquizado e rastreável.",
-      tags: ["Azure AD", "Hierarquia de Acesso", "Auditoria AAA", "RBAC"]
+      content: "A hierarquização de acesso é feita com base no Microsoft Entra ID ou outro serviço corporativo. Após a validação do token, o software consulta o nível hierárquico do usuário. Com o framework AAA, o acesso é auditado, e cada nível permite apenas as ações e dados correspondentes à função do usuário. Isso garante que o acesso aos sistemas corporativos seja sempre hierarquizado e rastreável.",
+      tags: ["Microsoft Entra ID", "Hierarquia de Acesso", "Auditoria AAA", "RBAC"]
     },
     {
       number: "04",
       icon: "fas fa-database",
       title: "Proteção de Dados Sensíveis",
       color: "#00cc88",
-      content: "Para evitar vazamentos de dados sensíveis (como imagem, áudio e localização), aplicamos sanitização local no smartglass — os dados são processados no dispositivo antes de qualquer transmissão. No backend, uma camada DLP analisa o tráfego para garantir que nenhum dado não autorizado seja enviado. Tudo é criptografado (via TLS) e monitorado pelo ZTNA, com auditoria contínua. Assim, protegemos imagem, áudio e localização, mesmo em redes terceiras.",
-      tags: ["Sanitização Local", "DLP Backend", "TLS Encryption", "Zero Trust"]
+      content: "Para evitar vazamentos de dados sensíveis (como imagem, áudio e localização), aplicamos sanitização local no smartglass — os dados são processados na API, antes de qualquer transmissão.  Uma camada DLP analisa o tráfego para garantir que nenhum dado não autorizado seja enviado. Tudo é criptografado (via TLS) e monitorado pelo ZTNA, com auditoria contínua. Assim, protegemos imagem, áudio e localização, mesmo em redes terceiras.",
+      tags: ["Sanitização Local", "TLS Encryption", "Zero Trust"]
     }
   ];
 
@@ -174,7 +174,7 @@ function App() {
 
           <div style={{ marginTop: 30, display: 'flex', justifyContent: 'center', gap: 16, flexWrap: 'wrap' }}>
             <span style={{ background: '#0066b3', padding: '6px 16px', borderRadius: 20 }}>
-              <i className="fas fa-fingerprint"></i> Biometria Facial + MFA
+              <i className="fas fa-fingerprint"></i> Biometria Facial + Token
             </span>
             <span style={{ background: '#0066b3', padding: '6px 16px', borderRadius: 20 }}>
               <i className="fas fa-shield-virus"></i> Zero Trust (ZTNA)
@@ -182,7 +182,7 @@ function App() {
             <span style={{ background: '#0066b3', padding: '6px 16px', borderRadius: 20 }}>
               <i className="fas fa-sitemap"></i> Azure AD + AAA
             </span>
-            <span style={{ background: '#004d26', padding: '6px 16px', borderRadius: 20 }}>
+            <span style={{ background: '#0066b3', padding: '6px 16px', borderRadius: 20 }}>
               <i className="fas fa-database"></i> DLP + Sanitização
             </span>
           </div>
@@ -271,7 +271,7 @@ function App() {
                 ZTNA revalida identidade a cada troca de contexto de rede.
               </div>
               <div className="risk-solution">
-                <i className="fas fa-shield"></i> Solução: Zero Trust + VPN + Token JWT
+                <i className="fas fa-shield"></i> Solução: Zero Trust + Token JWT
               </div>
             </div>
           </div>
@@ -283,7 +283,7 @@ function App() {
           </div>
           <div className="risk-item solved">
             <div className="risk-title">
-              <span>🌐 VPN + TLS 1.3 + ZTNA</span>
+              <span>🌐 TLS 1.3 + ZTNA</span>
               <i className="fas fa-check-circle" style={{ color: '#00cc88' }}></i>
             </div>
             <div>
