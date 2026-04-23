@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import './App.css';
 import logo from '../src/assets/logo.png';
+import { VideoPitch } from './components/VideoPitch';
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(true);
@@ -235,6 +236,12 @@ function App() {
             ))}
           </div>
         </div>
+
+        {/* Usando o componente VideoPitch */}
+        <VideoPitch 
+          videoId="SEU_ID_DO_VIDEO_AQUI" 
+          title="SmartGlass Seguro - Pitch Oficial"
+        />
 
         {/* Riscos resolvidos */}
         <div className="grid-2">
